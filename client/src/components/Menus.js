@@ -2,4 +2,4 @@ const Menus = (props) => {
 
 }
 
-export default Menu
+export default Menus
