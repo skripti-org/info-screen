@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import fetch from './services/fetch'
+import Sponsors from './components/Sponsors'
 
 const App = () => {
 
@@ -26,7 +27,7 @@ const App = () => {
         <em>Lataa lataa lataa</em>
       ) : (
         <div>
-          
+          <Sponsors />
         </div>
       )}
     </div>
