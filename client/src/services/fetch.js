@@ -17,4 +17,9 @@ const fetchRabbit = async () => {
     return response.data
 }
 
-export default { fetchBistro, fetchCarelia, fetchRabbit }
+const fetchEvents = async () => {
+    const response = await axios.get('https://skripti.org/calendarApi')
+    return response.data
+}
+
+export default { fetchBistro, fetchCarelia, fetchRabbit, fetchEvents }

@@ -10,7 +10,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "react-moment": "^1.1.1",
+    "lodash": "^4.17.21",
+    "html-react-parser": "^1.2.8",
+    "sass": "^1.37.5"
   },
   "scripts": {
     "start": "react-scripts start",
