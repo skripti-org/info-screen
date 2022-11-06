@@ -1,0 +1,1 @@
+Skripti ry:n infonäyttö 8D
