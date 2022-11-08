@@ -10,10 +10,8 @@ app.use(cors())
 const BASE_URL = "https://www.foodandco.fi/api/restaurant/menu"
 const ids = { "carelia": 179271, "bistro": 274364, "rabbit": 225003 }
 
-/*const date = new Date()
-const today = date.toISOString()*/
-
-const today = "2022-11-7"
+const date = new Date()
+const today = date.toISOString()
 
 app.get('/api/careliamenu', (req, res) => {
     axios.get(`${BASE_URL}/day?date=${today}&language=fi&restaurantPageId=${ids.carelia}`)

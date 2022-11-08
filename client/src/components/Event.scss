@@ -15,15 +15,13 @@ $pink: #e0a2c3;
 
 .event_container {
   display: flex;
-  @include object(95%, auto, #FFF);
+  @include object(60%, 100px, #FFF);
   border-radius: 2px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .25), 0 8px 8px 0 rgba(0, 0, 0, .15);
-  margin: 20px 0;
+  margin: 10px 0;
   max-width: 750px;
-  border-radius: 1em;
-  border-right: 0.5em solid $blue;
-
-
+  border-radius: 0em;
+  
   .event_info {
     width: 100%;
     padding: 10px 20px;

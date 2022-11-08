@@ -1,15 +1,9 @@
 import React from 'react'
 import Moment from 'react-moment'
-import ReactHtml from 'html-react-parser'
 import 'moment/locale/fi'
 import './Event.scss'
 
 export default function Event(props) {
-
-  const sutkautuksia = [
-    'Onpa täällä tyhjää :-)',
-    'Mitäpä tähän nyt selittämään :-)'
-  ]
 
 
   const location = () => {
@@ -43,39 +37,16 @@ export default function Event(props) {
     }
   }
 
-  const description = () => {
-    if (props.desc) {
-      return <p>{ReactHtml(props.desc.replace(/\n/g, '<br />'))}</p>
-    } else {
-      return <em>{sutkautuksia[Math.floor(Math.random() * sutkautuksia.length)]}</em>
-    }
-  }
-
   return (
     <>
       <div className="event_container">
-        <div className="event_bg"></div>
         <div className="event_info">
           <div className="event_title">
             <h4>{props.title}</h4>
           </div>
-
           <div className="event_location">
-            <span className="day">{day()}</span>
             <span className="date">{date()}</span>
             <span className="location">{location()}</span>
-          </div>
-
-          <div className="event_desc">
-            {description()}
-          </div>
-
-          <div className="event_footer">
-            <div className="event_more">
-              <a href={props.url} className="btn_more">
-                Kalenteriin
-              </a>
-            </div>
           </div>
         </div>
       </div>

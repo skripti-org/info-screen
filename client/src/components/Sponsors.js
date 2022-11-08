@@ -1,11 +1,6 @@
 import './Sponsors.css';
 
-function importAll(r) {
-    return r.keys().map(r);
-  }
-  
-const Sponsors = () => {
-    const filenames = importAll(require.context('../../public/sponsors', false, /\.(png|jpe?g|svg)$/));
+const Sponsors = ({ filenames }) => {
     return (
       <div className='container'>
         <h1 className="h1">YHTEISTYÖSSÄ</h1>
