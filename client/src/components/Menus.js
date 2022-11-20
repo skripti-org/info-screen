@@ -1,7 +1,6 @@
 import MenuItems from "./MenuItems";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import './Menus.css'
 import { useState, useEffect, useRef } from "react";
 
 const Menus = ({ menus }) => {
@@ -30,28 +29,25 @@ const Menus = ({ menus }) => {
   }, [index]);
 
     return (
-      
-      <div className="container">
-        <h1 className="h1">Ruokalistat</h1>
-        <Box sx={{ width: "100%" }}>
-          <Grid container rowSpacing={2} columnSpacing={{ xs: 2, sm: 5, md: 2 }}>
-              <div className='slides'>
-                {index === 0 && <MenuItems
-                                    name='Ravintola Carelia'
-                                    menu={menus.carelia.LunchMenu.SetMenus || 'Ei lounasta tarjolla tänään :-('}
-                                />}
-                {index === 1 && <MenuItems
-                                    name='Kampus Bistro'
-                                    menu={menus.bistro.LunchMenu.SetMenus || 'Ei lounasta tarjolla tänään :-('}
-                                />}
-                {index === 2 && <MenuItems
-                                    name='Wicked Rabbit'
-                                    menu={menus.rabbit.LunchMenu.SetMenus || 'Ei lounasta tarjolla tänään :-('}
-                                />}
-              </div>
-          </Grid>
-        </Box>  
-      </div>  
+      <Box>
+        <h1 className="h1">Ruokalistat tänään</h1>
+        <Grid container rowSpacing={2} sx={{margin: "auto", alignItems: "center", justifyContent: "center", textAlign: "center"}}>
+            <div className='slides'>
+              {index === 0 && <MenuItems
+                                  name='Ravintola Carelia'
+                                  menu={menus.carelia.LunchMenu.SetMenus}
+                              />}
+              {index === 1 && <MenuItems
+                                  name='Kampus Bistro'
+                                  menu={menus.bistro.LunchMenu.SetMenus}
+                              />}
+              {index === 2 && <MenuItems
+                                  name='Wicked Rabbit'
+                                  menu={menus.rabbit.LunchMenu.SetMenus}
+                              />}
+            </div>
+        </Grid>
+      </Box>  
     )
   }
   export default Menus

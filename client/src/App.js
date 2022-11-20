@@ -8,7 +8,7 @@ import EventMapper from './components/EventMapper'
 const App = () => {
 
   const [index, setIndex] = useState(0);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [events, setEvents] = useState([])
   const [menus, setMenus] = useState({carelia: [], bistro: [], rabbit: []})
   const [fileNames, setFileNames] = useState([])
@@ -25,7 +25,6 @@ const App = () => {
   }
   
   useEffect(() => {
-    setLoading(true)
     const fetchMenus = async () => {
       try {
         const bistroMenu = await fetch.fetchBistro();
@@ -37,33 +36,23 @@ const App = () => {
         console.log(error)
       }
     };
-    fetchMenus();
-  }, []);
-  
-  useEffect(() => {
-    setLoading(true)
     const fetchEvents = async () => {
       try {
         const events = await fetch.fetchEvents()
         setEvents(events)
-        setLoading(false)
       } catch (error) {
         console.log(error)
       }
     }
-    fetchEvents()
-  }, [])
-
-  useEffect(() => {
-    setLoading(true)
     const getFileNames = async () => {
-       const filenames = importAll(require.context('../public/sponsors', false, /\.(png|jpe?g|svg)$/))
-       setFileNames(filenames)
-       setLoading(false)
-    } 
-    getFileNames()
+      const filenames = importAll(require.context('../public/sponsors', false, /\.(png|jpe?g|svg)$/))
+      setFileNames(filenames)
+   } 
+    fetchMenus();
+    fetchEvents();
+    getFileNames();
   }, []);
-
+  
   useEffect(() => {
     resetTimeout();
     timeoutRef.current = setTimeout(
@@ -77,10 +66,9 @@ const App = () => {
       resetTimeout();
     };
   }, [index]);
-
+  
   return (
-
-    <div>
+    <div className='App'>
       <div className="slideshow">
         {loading ? (
           <em>Ladataan :-)</em>

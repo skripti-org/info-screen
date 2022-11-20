@@ -11,31 +11,34 @@ $pink: #e0a2c3;
   width: $w;
   height: $h;
   background: $bg;
+  text-align: center;
+  align-self: center;
+  justify-content: center;
+  
 }
 
 .event_container {
-  display: flex;
-  @include object(60%, 100px, #FFF);
+  position: relative;
+  @include object(80%, 100px, #FFF);
   border-radius: 2px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .25), 0 8px 8px 0 rgba(0, 0, 0, .15);
-  margin: 10px 0;
-  max-width: 750px;
-  border-radius: 0em;
-  
+  margin: auto;
+  margin-top: 15px;
+ 
   .event_info {
     width: 100%;
-    padding: 10px 20px;
     display: inline-block;
-    text-align: left;
+    text-align: center;
 
     .event_title {
       display: flex;
       @include object(100%, 50px, null);
       align-items: center;
+      text-align: center;
       padding-bottom: 0.5em;
-
+      
       h4 {
-        font-size: 26px;
+        font-size: 23px;
         font-family: 'Quicksand', sans-serif;
       }
     }

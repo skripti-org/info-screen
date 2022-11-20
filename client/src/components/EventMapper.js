@@ -2,6 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 import Event from './Events'
 import './EventMapper.scss'
+import Divider from '@mui/material/Divider';
 
 export default function EventMapper(props) {
 
@@ -43,7 +44,9 @@ export default function EventMapper(props) {
   const getEventsMonthly = (data, month) => {
     return (
       <div key={month} className="card-container">
-     
+        <Divider textAlign="left" variant="fullWidth" />
+        <h2>{month_dict[month]}</h2>
+        <Divider textAlign="left" variant="fullWidth" />
         {data.map((element) => {
           let event = element.events[0]
           return (
