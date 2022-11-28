@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Major+Mono+Display&family=Roboto+Slab&display=swap');
 
 
+.container{
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: expand .8s ease forwards;
+    position: relative;
+    transition: all .8s ease;
+}
 
 .h1 {
     color: black;
@@ -13,10 +22,13 @@
     display: inline-grid;
     grid-template-columns: 250px 250px 250px; 
     grid-auto-rows: 1fr;
-    width: 100%;
     justify-content: center;
     margin: auto;
     align-items: center;
+    background-color: white;
+    column-gap: 10px;
+    border-radius: 5px;
+
 }
 
 .grid-item-14 {
@@ -32,8 +44,37 @@
 }
 
 #grid-item {
-    
     padding: 20px;
     text-align: center;
     margin: auto;
-  }
+    
+    
+    /*box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .25), 0 8px 8px 0 rgba(0, 0, 0, .15);*/
+}
+
+@media screen and (max-width: 760px) {
+    .grid-container {
+        display: inline-grid;
+        grid-template-columns: auto auto;
+       
+        justify-content: center;
+        margin: auto;
+        align-items: center;
+        background-color: white;
+    }
+    .grid-item-14 {
+       
+        margin: auto;
+    }
+    
+    .grid-item-11 {
+       
+        margin: auto;
+    }
+    
+    #grid-item {
+        margin: auto;
+    }
+    
+
+}

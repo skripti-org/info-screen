@@ -2,6 +2,7 @@ import React from 'react'
 import Moment from 'react-moment'
 import 'moment/locale/fi'
 import './Event.scss'
+import EventIcon from '@mui/icons-material/Event';
 
 export default function Event(props) {
 

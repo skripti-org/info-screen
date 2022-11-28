@@ -12,7 +12,7 @@ const App = () => {
   const [events, setEvents] = useState([])
   const [menus, setMenus] = useState({carelia: [], bistro: [], rabbit: []})
   const [fileNames, setFileNames] = useState([])
-  const delay = 10000;
+  const delay = 2000;
   const timeoutRef = useRef(null);
 
   function resetTimeout() {
@@ -52,21 +52,23 @@ const App = () => {
     fetchEvents();
     getFileNames();
   }, []);
+
   
-  useEffect(() => {
+   useEffect(() => {
     resetTimeout();
-    timeoutRef.current = setTimeout(
-      () =>
-        setIndex((prevIndex) =>
-          prevIndex === 2 ? 0 : prevIndex + 1
-        ),
-      delay
-    );
-    return () => {
-      resetTimeout();
-    };
-  }, [index]);
+     timeoutRef.current = setTimeout(
+       () =>
+         setIndex((prevIndex) =>
+           prevIndex === 2 ? 0 : prevIndex + 1
+         ),
+       delay
+     );
+     return () => {
+       resetTimeout();
+     };
+   }, [index]);
   
+
   return (
     <div className='App'>
       <div className="slideshow">

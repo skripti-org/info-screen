@@ -8,6 +8,9 @@ const Menus = ({ menus }) => {
   const timeoutRef = useRef(null);
   const delay = 3333;
 
+  const date = new Date();
+  const today = date.toLocaleDateString("fi-FI");
+
   function resetTimeout() {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
@@ -30,8 +33,8 @@ const Menus = ({ menus }) => {
 
     return (
       <Box>
-        <h1 className="h1">Ruokalistat tänään</h1>
-        <Grid container rowSpacing={2} sx={{margin: "auto", alignItems: "center", justifyContent: "center", textAlign: "center"}}>
+        <h1 className="h1">Ruokalistat {today}</h1>
+        <Grid container rowSpacing={2} sx={{marginTop: "10px", alignItems: "center", justifyContent: "center", textAlign: "center"}}>
             <div className='slides'>
               {index === 0 && <MenuItems
                                   name='Ravintola Carelia'
