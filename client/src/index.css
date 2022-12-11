@@ -6,8 +6,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #212529;
-  background-image: '../public/images/skripti_logo_trans.png';
-  object-fit: cover;
+  background-image: url('../public/images/skripti_logo_trans.png');
+  
+  background-size: 1000px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-y: 50px;
+
 }
 
 code {

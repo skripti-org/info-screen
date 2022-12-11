@@ -8,31 +8,31 @@ const MenuItems = (props) => {
 
     return (
         <div>
-            <Box sx={{ minWidth: 700}}>
-            <Card variant="outlined">
+            <Box sx={{ minWidth: 700 }}>
+            <Card variant="outlined" sx={{ backgroundColor: '#1a1a1a'}}>
                 <CardContent>
-                <Typography align="center" variant="h1" sx={{ fontSize: 30, mb: 0 }} color="black" gutterBottom>{props.name}<Divider textAlign="left" variant="fullWidth" /></Typography>
+                <Typography align="center" variant="h1" sx={{ fontSize: 30, mb: 2, fontWeight: 'light' }} color="white" gutterBottom>{props.name}<Divider textAlign="left" variant="fullWidth" /></Typography>
                 <ul>
-                    {props.menu.length ? 
-                    (props.menu.map(menu => (
-                    <div>
-                        <Typography align="left" variant="subtitle1" sx={{ fontSize: 18, fontWeight: 'bold' }}> {menu.Name.toUpperCase()} </Typography>
-                        <Typography align="left" variant="subtitle2" sx={{ fontSize: 12 }}> {menu.Price} <Divider textAlign="left" variant="fullWidth" /></Typography>
-                            {Object.values(menu.Meals).map((item) => {
-                                return <Typography align="left" variant="subtitle1" sx={{ fontSize: 18, mb: "5px" }} component="div"> 
-                                        {item.Name} ({item.Diets.join(", ")})
-                        </Typography>
-                        })}
-                    </div>
-                    ))
-                    )
+                    {props.menu ? 
+                        (props.menu.map(menu => (
+                            <div>
+                                <Typography align="left" variant="subtitle1" color="white" sx={{ fontSize: 18, fontWeight: 'bold' }}> {menu.Name.toUpperCase()} </Typography>
+                                <Typography align="left" variant="subtitle2" color="white" sx={{ fontSize: 12 }}> {menu.Price} <Divider textAlign="left" variant="fullWidth" /></Typography>
+                                    {Object.values(menu.Meals).map((item) => {
+                                        return <Typography align="left" variant="subtitle1" color="white" sx={{ fontSize: 18, mb: "5px" }} component="div"> 
+                                                {item.Name} ({item.Diets.join(", ")})
+                                </Typography>
+                                })}
+                            </div>
+                        ))
+                        )
                     : 
-                    <div>
-                        <Typography align="left" variant="subtitle1" sx={{ fontSize: 18, mb: 2 }} component="div">
-                            <em>Ei ruokaa tänään :-(</em>
-                        <Divider textAlign="left" variant="fullWidth" />
-                        </Typography>
-                    </div>
+                        <div>
+                            <Typography align="left" variant="subtitle1" color="white" sx={{ fontSize: 18, mb: 2 }} component="div">
+                                <em>Ei ruokaa tänään :-(</em>
+                            
+                            </Typography>
+                        </div>
                     }
                 </ul>
                 </CardContent>

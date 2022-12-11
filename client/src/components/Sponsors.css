@@ -9,6 +9,7 @@
     animation: expand .8s ease forwards;
     position: relative;
     transition: all .8s ease;
+    
 }
 
 .h1 {
@@ -25,9 +26,10 @@
     justify-content: center;
     margin: auto;
     align-items: center;
-    background-color: white;
+    background-color: #1a1a1a;
     column-gap: 10px;
     border-radius: 5px;
+    
 
 }
 

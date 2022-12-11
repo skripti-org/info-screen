@@ -4,6 +4,7 @@ import Menus from './components/Menus'
 import fetch from './services/fetch'
 import './App.css'
 import EventMapper from './components/EventMapper'
+import Event from './components/Events'
 
 const App = () => {
 
@@ -12,6 +13,8 @@ const App = () => {
   const [events, setEvents] = useState([])
   const [menus, setMenus] = useState({carelia: [], bistro: [], rabbit: []})
   const [fileNames, setFileNames] = useState([])
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slides = [<Sponsors filenames={fileNames}/>, <EventMapper events={events}/>, <Menus menus={menus}/>];
   const delay = 2000;
   const timeoutRef = useRef(null);
 
@@ -20,6 +23,7 @@ const App = () => {
       clearTimeout(timeoutRef.current);
     }
   }
+  
   function importAll(r) {
     return r.keys().map(r);
   }
@@ -32,6 +36,7 @@ const App = () => {
         const rabbitMenu = await fetch.fetchRabbit();
         setMenus({ carelia: careliaMenu , bistro: bistroMenu, rabbit: rabbitMenu });
         setLoading(false)
+        console.log(menus)
       } catch (error) {
         console.log(error)
       }
@@ -53,38 +58,62 @@ const App = () => {
     getFileNames();
   }, []);
 
-  
+
    useEffect(() => {
-    resetTimeout();
-     timeoutRef.current = setTimeout(
-       () =>
-         setIndex((prevIndex) =>
-           prevIndex === 2 ? 0 : prevIndex + 1
-         ),
-       delay
-     );
-     return () => {
-       resetTimeout();
-     };
-   }, [index]);
+    // the interval that switches between slides
+    const interval = setInterval(() => {
+      setCurrentSlide((prevIndex) =>
+        prevIndex === 2 ? 0 : prevIndex + 1
+      )
+    }, 3000);
+
+    // clean up the interval when the component is unmounted
+    return () => {
+      clearInterval(interval);
+    };
+  }, [currentSlide]);
   
+  const styles = {
+    // the container for the slides
+    container: {
+      position: "relative",
+      width: "100%",
+      height: "100%",
+      
+    },
+    // the styles for the individual slides
+    slide: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      // add the transition property to make the slides slide to the left
+      // when they swap
+      transition: "left 0.5s",
+    }
+  };
+
 
   return (
-    <div className='App'>
+    <div className="slideshow-container">
       <div className="slideshow">
         {loading ? (
           <em>Ladataan :-)</em>
         ) : (
-          <div
-            className="slideshowSlider"
-            //style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
-          >
-            <div className='slides'>
-              {index === 2 && <EventMapper events={events}/>}
-              {index === 0 && <Sponsors filenames={fileNames}/>}
-              {index === 1 && <Menus menus={menus}/>}
+          <div className='slide-container'>
+          {slides.map((slide, index) => (
+            <div className='slide'
+              key={index}
+              style={{
+                ...styles.slide,
+                left: index === currentSlide ? 0 : "-100%"
+              }}
+            >
+              {slide}
             </div>
-          </div>
+          ))}
+        </div>
         )}
       </div>
   </div>

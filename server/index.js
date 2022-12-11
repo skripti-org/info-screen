@@ -7,14 +7,8 @@ const cors = require('cors')
 app.use(express.json())
 app.use(cors())
 
-const BASE_URL = "https://www.foodandco.fi/api/restaurant/menu"
-const ids = { "carelia": 179271, "bistro": 274364, "rabbit": 225003 }
-
-const date = new Date()
-const today = date.toISOString()
-
 app.get('/api/careliamenu', (req, res) => {
-    axios.get(`${BASE_URL}/day?date=${today}&language=fi&restaurantPageId=${ids.carelia}`)
+    axios.get(`https://www.compass-group.fi/menuapi/feed/json?costNumber=0417&language=fi`)
         .then(response => {
             res.send(response.data);
         })
@@ -24,7 +18,7 @@ app.get('/api/careliamenu', (req, res) => {
 });
 
 app.get('/api/bistromenu', (req, res) => {
-    axios.get(`${BASE_URL}/day?date=${today}&language=fi&restaurantPageId=${ids.bistro}`)
+    axios.get(`https://www.compass-group.fi/menuapi/feed/json?costNumber=0433&language=fi`)
         .then(response => {
             res.send(response.data);
         })
@@ -34,7 +28,7 @@ app.get('/api/bistromenu', (req, res) => {
 });
 
 app.get('/api/rabbitmenu', (req, res) => {
-    axios.get(`${BASE_URL}/day?date=${today}&language=fi&restaurantPageId=${ids.rabbit}`)
+    axios.get(`https://www.compass-group.fi/menuapi/feed/json?costNumber=041703&language=fi`)
         .then(response => {
             res.send(response.data);
         })
