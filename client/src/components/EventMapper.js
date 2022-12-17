@@ -2,7 +2,6 @@ import React from 'react'
 import _ from 'lodash'
 import Event from './Events'
 import './EventMapper.scss'
-import Divider from '@mui/material/Divider';
 
 export default function EventMapper(props) {
 
@@ -44,21 +43,19 @@ export default function EventMapper(props) {
   const getEventsMonthly = (data, month) => {
     return (
       <div key={month} className="card-container">
-        
         <h2>{month_dict[month]}</h2>
-        
-        {data.map((element) => {
-          let event = element.events[0]
-          return (
-            <Event
-              key={event.id}
-              title={event.summary}
-              date={event.start.dateTime}
-              endingDate={event.end.dateTime}
-              location={event.location}
-            />
-          )
-        })}
+          {data.map((element) => {
+            let event = element.events[0]
+            return (
+              <Event
+                key={event.id}
+                title={event.summary}
+                date={event.start.dateTime}
+                endingDate={event.end.dateTime}
+                location={event.location}
+              />
+            )
+          })}
       </div>
     )
   }
@@ -66,9 +63,9 @@ export default function EventMapper(props) {
   return (
     <>
       <h1 className='h1'>Tulevia tapahtumia</h1>
-      {_.map(event_data, (data, month) => {
-        return getEventsMonthly(data, month)
-      })}
+        {_.map(event_data, (data, month) => {
+          return getEventsMonthly(data, month)
+        })}
     </>
   )
 }

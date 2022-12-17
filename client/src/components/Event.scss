@@ -19,7 +19,7 @@ $pink: #e0a2c3;
 
 .event_container {
   position: relative;
-  @include object(500px, 100px, #1a1a1a);
+  @include object(500px, 100px, #1a1a1a4f);
   border-radius: 2px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .25), 0 8px 8px 0 rgba(0, 0, 0, .15);
   margin: auto;

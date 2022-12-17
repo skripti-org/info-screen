@@ -12,9 +12,9 @@ const Sponsors = ({ filenames }) => {
               return (
                   <div key={filename} className={`grid-item-${index}`} id="grid-item">
                     {mainSponsorIdx.includes(index) ? 
-                      <img src={filename} alt={filename} width={300} />
-                      :
                       <img src={filename} alt={filename} width={200} />
+                      :
+                      <img src={filename} alt={filename} width={120} />
                     }
                   </div>
               )

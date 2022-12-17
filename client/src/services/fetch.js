@@ -9,6 +9,7 @@ const fetchCarelia = async () => {
 
 const fetchBistro = async () => {
     const response = await axios.get(`${BASE_URL}/bistromenu`)
+    console.log(response)
     return response.data
 }
 

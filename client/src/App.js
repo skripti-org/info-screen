@@ -8,12 +8,11 @@ import Event from './components/Events'
 
 const App = () => {
 
-  const [index, setIndex] = useState(0);
   const [loading, setLoading] = useState(true)
   const [events, setEvents] = useState([])
   const [menus, setMenus] = useState({carelia: [], bistro: [], rabbit: []})
   const [fileNames, setFileNames] = useState([])
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(2);
   const slides = [<Sponsors filenames={fileNames}/>, <EventMapper events={events}/>, <Menus menus={menus}/>];
   const delay = 2000;
   const timeoutRef = useRef(null);
@@ -27,7 +26,7 @@ const App = () => {
   function importAll(r) {
     return r.keys().map(r);
   }
-  
+
   useEffect(() => {
     const fetchMenus = async () => {
       try {
@@ -36,7 +35,7 @@ const App = () => {
         const rabbitMenu = await fetch.fetchRabbit();
         setMenus({ carelia: careliaMenu , bistro: bistroMenu, rabbit: rabbitMenu });
         setLoading(false)
-        console.log(menus)
+        
       } catch (error) {
         console.log(error)
       }
@@ -58,7 +57,7 @@ const App = () => {
     getFileNames();
   }, []);
 
-
+    
    useEffect(() => {
     // the interval that switches between slides
     const interval = setInterval(() => {
@@ -73,6 +72,7 @@ const App = () => {
     };
   }, [currentSlide]);
   
+
   const styles = {
     // the container for the slides
     container: {
@@ -93,15 +93,13 @@ const App = () => {
       transition: "left 0.5s",
     }
   };
-
-
   return (
     <div className="slideshow-container">
       <div className="slideshow">
-        {loading ? (
+        {loading ? 
           <em>Ladataan :-)</em>
-        ) : (
-          <div className='slide-container'>
+        : 
+        <div className='slide-container'>
           {slides.map((slide, index) => (
             <div className='slide'
               key={index}
@@ -114,7 +112,18 @@ const App = () => {
             </div>
           ))}
         </div>
-        )}
+        }
+      </div>
+      <div className="slideshowDots">
+        {slides.map((_, idx) => (
+          <div
+            key={idx}
+            className={`slideshowDot${currentSlide === idx ? " active":""}`}
+            onClick={() => {
+              setCurrentSlide(idx);
+            }}
+          ></div>
+        ))}
       </div>
   </div>
   );

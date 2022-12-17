@@ -2,6 +2,7 @@ import MenuItems from "./MenuItems";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { useState, useEffect, useRef } from "react";
+import './Menus.css';
 
 const Menus = ({ menus }) => {
   const [index, setIndex] = useState(0);
@@ -38,12 +39,12 @@ const Menus = ({ menus }) => {
             <div className='slides'>
               {index === 0 && <MenuItems
                                   name={menus.carelia.RestaurantName}
-                                  menu={menus.carelia.MenusForDays.SetMenus}
+                                  menu={menus.carelia.MenusForDays}
                               />
               }
               {index === 1 && <MenuItems
                                   name={menus.bistro.RestaurantName}
-                                  menu={menus.bistro.MenusForDays.SetMenus}
+                                  menu={menus.bistro.MenusForDays}
                               />
               }             
             </div>
