@@ -20,7 +20,7 @@ export default function EventMapper(props) {
     11: 'Marraskuu',
     12: 'Joulukuu',
   }
-
+  
   //group events by month
   const groupEvents = () => {
     const events = props.events.items.map((event) => {

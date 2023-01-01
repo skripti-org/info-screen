@@ -12,9 +12,9 @@ const App = () => {
   const [events, setEvents] = useState([])
   const [menus, setMenus] = useState({carelia: [], bistro: [], rabbit: []})
   const [fileNames, setFileNames] = useState([])
-  const [currentSlide, setCurrentSlide] = useState(2);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [<Sponsors filenames={fileNames}/>, <EventMapper events={events}/>, <Menus menus={menus}/>];
-  const delay = 2000;
+  const delay = 10000;
   const timeoutRef = useRef(null);
 
   function resetTimeout() {
@@ -57,21 +57,21 @@ const App = () => {
     getFileNames();
   }, []);
 
-    
+
    useEffect(() => {
     // the interval that switches between slides
     const interval = setInterval(() => {
       setCurrentSlide((prevIndex) =>
         prevIndex === 2 ? 0 : prevIndex + 1
       )
-    }, 3000);
+    }, delay);
 
     // clean up the interval when the component is unmounted
     return () => {
       clearInterval(interval);
     };
   }, [currentSlide]);
-  
+
 
   const styles = {
     // the container for the slides
@@ -89,10 +89,10 @@ const App = () => {
       width: "100%",
       height: "100%",
       // add the transition property to make the slides slide to the left
-      // when they swap
       transition: "left 0.5s",
     }
   };
+
   return (
     <div className="slideshow-container">
       <div className="slideshow">
